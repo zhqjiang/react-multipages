@@ -113,6 +113,18 @@ module.exports = function (webpackEnv) {
       });
 
       plugins.push(newPlugins);
+      // generate an index.html which lists all other entry index.html
+      if (isEnvDevelopment) {
+        plugins.push(new HtmlWebpackPlugin({
+          inject: false,
+          template: paths.entriesTemplateJs,
+          filename: 'index.html',
+          templateParameters: {
+            title: '入口列表',
+            entries: Object.keys(paths.dirs).map(key => './' + key.split('_').join('/')),
+          }
+        }));
+      }
     });
     return { entry, plugins };
   }
@@ -538,8 +550,8 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
-      // Generates an `index.html` file with the <script> injected.
       ...Setup.plugins,
+
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
