@@ -1,14 +1,14 @@
 
 function generateList(arr) {
-    let list = '';
-    arr.forEach(ele => {
-        list += `<li><a href="${ele}">${ele}</a></li>`
-    })
-    return list;
+  let list = '';
+  arr.forEach(ele => {
+    list += `<li><a href="${ele}">${ele}</a></li>`;
+  });
+  return list;
 }
 
 module.exports = function (templateParams) {
-    return `
+  return `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,5 +34,5 @@ module.exports = function (templateParams) {
   </ul>
 </body >
 
-</html > `
+</html > `;
 };

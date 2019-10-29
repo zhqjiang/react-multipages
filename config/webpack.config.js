@@ -113,7 +113,7 @@ module.exports = function (webpackEnv) {
       });
 
       plugins.push(newPlugins);
-      // generate an index.html which lists all other entry index.html
+      // generate an index.html which lists all other entries
       if (isEnvDevelopment) {
         plugins.push(new HtmlWebpackPlugin({
           inject: false,
